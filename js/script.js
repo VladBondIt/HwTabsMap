@@ -125,3 +125,30 @@ $(document).ready(function () {
     });
     $('.carpark__slider').slick('setPosition');
 });
+
+
+const popUp = document.querySelector('.popup'),
+    popInner = document.querySelector('.popup__content'),
+    popBtns = document.querySelectorAll('#pop-trigg'),
+    closeBtns = document.querySelectorAll('.close-popup');
+
+
+function openPopup() {
+    popUp.classList.add('open');
+    popInner.classList.add('open');
+}
+function closePopup() {
+    popUp.classList.remove('open');
+    popInner.classList.remove('open');
+}
+
+closeBtns.forEach(closeBtnItem => {
+    closeBtnItem.addEventListener('click', closePopup);
+});
+
+for (let i = 0; i < popBtns.length; i++) {
+    popBtns[i].addEventListener('click', (e) => {
+        e.preventDefault();
+        openPopup();
+    })
+}

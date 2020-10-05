@@ -1284,6 +1284,154 @@ body {
   text-decoration: underline;
 }
 
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+.popup.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup__body {
+  min-height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 30px 10px;
+  z-index: 1000;
+}
+
+.popup__content {
+  position: relative;
+  max-width: 800px;
+  background-color: #fff;
+  padding: 30px;
+  opacity: 0;
+  -webkit-transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+          transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
+  -webkit-transition: all 0.9s;
+  -o-transition: all 0.9s;
+  transition: all 0.9s;
+}
+
+.popup__content.open {
+  opacity: 1;
+  -webkit-transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+          transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
+}
+
+.popup__close {
+  display: block;
+  position: absolute;
+  background-image: url(../img/close-24px.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.popup__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 250px;
+}
+
+.popup__form input {
+  width: 280px;
+  height: 50px;
+  border-bottom: 1px solid #061e37;
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: rgba(51, 51, 51, 0.7);
+}
+
+.popup__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.popup__btns input {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-bottom: none;
+  position: absolute;
+}
+
+.popup__btns input:checked + .popup__check-box {
+  background: url(../img/check_box-black-24dp.svg) center/cover no-repeat;
+}
+
+.popup__btns label {
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  letter-spacing: 0.015em;
+  color: #333333;
+  padding-left: 15px;
+}
+
+.popup__btns button {
+  width: 250px;
+  height: 50px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #f2f2f2;
+  background: #ff352b;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.popup__btns button:active {
+  -webkit-transform: translate(1px, 2px);
+      -ms-transform: translate(1px, 2px);
+          transform: translate(1px, 2px);
+}
+
+.popup__check-box {
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  background: url(../img/check_box_outline_blank-black-24dp.svg) center/cover no-repeat;
+  margin-left: -20px;
+  margin-top: 0.5px;
+}
+
 @-webkit-keyframes phone {
   0% {
     -webkit-transform: rotateY(20deg);
@@ -1765,6 +1913,12 @@ body {
     text-align: center;
   }
 }
+
+@media (max-width: 321px) {
+  .popup__content {
+    padding: 30px 10px;
+  }
+}
 @supports (-webkit-appearance:none){
 .carpark__slider .slick-arrow.slick-prev{background-image:url(../img/prev_slid.svg)}
 .carpark__slider .slick-arrow.slick-next{background-image:url(../img/next_slid.svg)}
@@ -1774,6 +1928,9 @@ body {
 .contact__btn input:checked + .contact__check-box{background:url(../img/check_box-black-24dp.svg) center/cover no-repeat}
 .contact__check-box{background:url(../img/check_box_outline_blank-black-24dp.svg) center/cover no-repeat}
 .map__list li::before{background:url(../img/map_card_chk.svg)}
+.popup__close{background-image:url(../img/close-24px.svg)}
+.popup__btns input:checked + .popup__check-box{background:url(../img/check_box-black-24dp.svg) center/cover no-repeat}
+.popup__check-box{background:url(../img/check_box_outline_blank-black-24dp.svg) center/cover no-repeat}
 }
 
  @media (max-width: 1439px){
@@ -1857,6 +2014,14 @@ body {
 }
 
  @media (max-width: 424px){
+
+@supports (-webkit-appearance:none){
+
+}
+
+}
+
+ @media (max-width: 321px){
 
 @supports (-webkit-appearance:none){
 
