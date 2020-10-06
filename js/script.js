@@ -27,34 +27,15 @@ testWebP(function (support) {
 //         e.preventDefault();
 //     })
 // });
-// Hovers
-// const triggLeft = document.querySelector('.stats__left')
-// const changeFill = document.querySelector('.stats__svg_l')
 
-// triggLeft.onmouseenter = () => {
-//     changeFill.style.fill = "white";
-// };
-// triggLeft.onmouseleave = () => {
-//     changeFill.style.fill = "#5e80ff";
-// };
-
-// const triggRight = document.querySelector('.stats__right')
-// const changeStroke = document.querySelector('.stats__svg_r')
-
-// triggRight.onmouseenter = () => {
-//     changeStroke.style.stroke = "white";
-// };
-// triggRight.onmouseleave = () => {
-//     changeStroke.style.stroke = "#5e80ff";
-// };
-// Spoilers
+// !!!!!Spoilers!!!!!
 $(document).ready(function () {
     // При КЛИКЕ на блок .block__title происходит функция ↓↓
     $('.reviews__spoiler').click(function (event) {
         // Описание функции
         // Именно на нажамот загаловке .block__title добавляем переключатель-блок active
         // с помощью next мы добавляем анимацию слайда переключателся slideToggle со скоростью 300 мили секунд;
-        $(this).prev().toggleClass('active');
+        $(this).toggleClass('active').prev().toggleClass('active');
         if ($(this).text() === 'Читать полностью') {
             $(this).text('Свернуть')
         } else if ($(this).text() === 'Свернуть') {
@@ -82,7 +63,7 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('.header__link').click(function (event) {
         $('.header__burger,.header__menu').toggleClass('active');
-        $('body').toggleClass('lock');
+        $('body').removeClass('lock');
     });
 });
 
@@ -105,7 +86,7 @@ for (let i = 0; i < btns.length; i++) {
     });
 };
 
-// Slider
+// !!!!Slider!!!!
 $(document).ready(function () {
     $('.carpark__slider').slick({
         speed: 800,
@@ -126,10 +107,11 @@ $(document).ready(function () {
     $('.carpark__slider').slick('setPosition');
 });
 
-
+// !!!!MODALS!!!!
 const popUp = document.querySelector('.popup'),
     popInner = document.querySelector('.popup__content'),
-    popBtns = document.querySelectorAll('#pop-trigg'),
+    popBtns = document.querySelectorAll('.pop-trigg'),
+    popBody = document.querySelector('.popup__body'),
     closeBtns = document.querySelectorAll('.close-popup');
 
 
@@ -143,12 +125,24 @@ function closePopup() {
 }
 
 closeBtns.forEach(closeBtnItem => {
-    closeBtnItem.addEventListener('click', closePopup);
+    closeBtnItem.addEventListener('click', (e) => {
+        e.preventDefault();
+        closePopup();
+        document.body.classList.remove('lock');
+    });
+});
+
+popBody.addEventListener('click', (e) => {
+    if (e.target === popBody) {
+        closePopup();
+        document.body.classList.remove('lock');
+    }
 });
 
 for (let i = 0; i < popBtns.length; i++) {
     popBtns[i].addEventListener('click', (e) => {
         e.preventDefault();
         openPopup();
+        document.body.classList.add('lock');
     })
 }
